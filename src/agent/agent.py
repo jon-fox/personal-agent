@@ -48,4 +48,5 @@ def save_memory(content: str) -> str:
     return "Saved to long-term memory."
 
 
-agent.to_cli_sync()
+if __name__ == "__main__":
+    agent.to_cli_sync()

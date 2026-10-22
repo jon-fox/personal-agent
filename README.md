@@ -27,4 +27,3 @@ cd src && uv run python -m agent.agent
 ## Memory
 
 Hy-Memory runs in `pro` mode (LLM fact extraction + semantic search). To skip LLM calls, use `mode="lite"` in `src/agent/agent.py`. To use a different OpenAI-compatible endpoint for memory, set `MEMORY_LLM_*` / `MEMORY_EMBEDDER_*` env vars.
-
