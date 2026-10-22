@@ -1,7 +1,7 @@
 [project]
 name = "personal-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Personal CLI coding agent with long-term memory (pydantic-ai + Hy-Memory)"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
