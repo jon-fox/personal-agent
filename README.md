@@ -21,7 +21,7 @@ export OPENAI_API_KEY=...   # used by the agent and by Hy-Memory (LLM + embeddin
 ## Run
 
 ```bash
-cd src && uv run python -m agent.agent
+uv run personal-agent
 ```
 
 ## Memory
