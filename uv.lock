@@ -2605,7 +2605,7 @@ wheels = [
 [[package]]
 name = "personal-agent"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "hy-memory" },
     { name = "pydantic-ai" },
