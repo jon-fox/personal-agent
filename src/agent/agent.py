@@ -5,18 +5,18 @@ from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import WebSearch
 from pydantic_ai_harness import Advisor, Coder
 
-from constants.agent_constants import MEMORY_USER_ID, OPENAI_SOL
+from constants.agent_constants import ADVISOR_MODEL, AGENT_MODEL, MEMORY_MODE, MEMORY_USER_ID
 
 logging.getLogger("hy_memory").setLevel(logging.WARNING)
 
-memory = HyMemoryClient(mode="pro")  # stores under ~/.hy_memory; uses OPENAI_API_KEY unless MEMORY_LLM_*/MEMORY_EMBEDDER_* are set
+memory = HyMemoryClient(mode=MEMORY_MODE)  # stores under ~/.hy_memory; uses OPENAI_API_KEY unless MEMORY_LLM_*/MEMORY_EMBEDDER_* are set
 
 agent = Agent(
-    OPENAI_SOL,
+    AGENT_MODEL,
     capabilities=[
         Coder(),  # files, shell, repo context, planning, sub-agents, context management
         WebSearch(),  # look up docs and error messages on the web
-        Advisor('openai:gpt-5.6-sol'),  # a second opinion from another model when stuck
+        Advisor(ADVISOR_MODEL),  # a second opinion from another model when stuck
     ],
 )
 
