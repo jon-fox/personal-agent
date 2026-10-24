@@ -26,4 +26,13 @@ uv run personal-agent
 
 ## Memory
 
-Hy-Memory runs in `pro` mode (LLM fact extraction + semantic search). To skip LLM calls, use `mode="lite"` in `src/agent/agent.py`. To use a different OpenAI-compatible endpoint for memory, set `MEMORY_LLM_*` / `MEMORY_EMBEDDER_*` env vars.
+Hy-Memory runs in `pro` mode (LLM fact extraction + semantic search). To use a different OpenAI-compatible endpoint for memory, set `MEMORY_LLM_*` / `MEMORY_EMBEDDER_*` env vars.
+
+## Configuration (env vars, all optional)
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `AGENT_MODEL` | `openai:gpt-5.6-sol` | Main agent model |
+| `ADVISOR_MODEL` | `openai:gpt-5.6-sol` | Second-opinion model |
+| `MEMORY_MODE` | `pro` | Hy-Memory mode (`lite` = embeddings only, no LLM calls) |
+| `MEMORY_USER_ID` | `test` | Memory namespace per user |
