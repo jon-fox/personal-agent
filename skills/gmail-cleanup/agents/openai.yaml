@@ -1,4 +1,4 @@
 interface:
   display_name: "Gmail Cleanup"
-  short_description: "Trash clear spam and final job rejection emails"
+  short_description: "Clean Gmail, flag threats, and add appointments; never reply"
   default_prompt: "Use $gmail-cleanup to process the new Gmail messages supplied by this event."
