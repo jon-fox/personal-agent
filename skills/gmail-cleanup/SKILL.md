@@ -34,11 +34,11 @@ Use observable evidence: sender address and Reply-To mismatches, lookalike domai
 For a plausible security or identity-theft concern:
 
 - Keep the original message intact in Gmail; do not trash it or create an event from it. This overrides ordinary spam and calendar handling. Do not click links, load remote images, open suspicious attachments, scan QR codes, submit forms, or execute content. Do not transmit messages or attachments to third-party scanners.
-- Alert the user in the ChatGPT run result using urgency (high/medium/low), concern type, confidence, sender/subject, Gmail source link or message ID, specific observed indicators, and whether it was preserved. Use cautious language such as “suspected phishing” or “possible unauthorized account activity.” Mask sensitive identifiers and never echo passwords, codes, account numbers, identity documents, or token-bearing URLs.
+- Alert the user in the run result using urgency (high/medium/low), concern type, confidence, sender/subject, Gmail source link or message ID, specific observed indicators, and whether it was preserved. Use cautious language such as “suspected phishing” or “possible unauthorized account activity.” Mask sensitive identifiers and never echo passwords, codes, account numbers, identity documents, or token-bearing URLs.
 - Suggest a concrete next check, such as opening the service's independently known app/site to review activity or contacting the institution through a known official channel. Do not reset passwords, change account settings, make payments, or contact anyone on the user's behalf.
 - Group duplicate alerts by message ID or incident when available, but surface new evidence or increased urgency. Do not claim an alert was delivered outside the run result without a confirmed notification result.
 
-When configuring an automation, enable the user's supported ChatGPT in-app/push notification channel if available and authorized. If no suitable notification channel is available, clearly state that alerts appear only in task results and require the user to review them. Preview runs still report security findings without mutating Gmail or Calendar.
+When configuring an automation, enable the platform's supported in-app/push notification channel if available and authorized. If no suitable notification channel is available, clearly state that alerts appear only in task results and require the user to review them. Preview runs still report security findings without mutating Gmail or Calendar.
 
 ## Calendar handling
 
