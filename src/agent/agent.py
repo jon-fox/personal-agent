@@ -44,8 +44,39 @@ def recall_memories(ctx: RunContext) -> str:
 def save_memory(content: str) -> str:
     """Save a fact worth remembering across sessions: user preferences, project context,
     decisions, or corrections. Phrase it as a standalone sentence."""
-    memory.add(content, user_id=MEMORY_USER_ID)
+    try:
+        memory.add(content, user_id=MEMORY_USER_ID)
+    except Exception:
+        logging.getLogger(__name__).exception("memory add failed")
+        return "Failed to save memory; the memory backend returned an error."
     return "Saved to long-term memory."
+
+
+@agent.tool_plain
+def list_memories(limit: int = 50) -> str:
+    """List stored long-term memories with their IDs, newest first. Use this to review
+    what is remembered before correcting or deleting a memory."""
+    try:
+        result = memory.list_memories(user_id=MEMORY_USER_ID, limit=limit)
+    except Exception:
+        logging.getLogger(__name__).exception("memory list failed")
+        return "Failed to list memories; the memory backend returned an error."
+    items = (result.get("vdb") or {}).get("memories") or []
+    if not items:
+        return "No memories stored."
+    return "\n".join(f"{m['memory_id']}: {m['content']}" for m in items if m.get("content"))
+
+
+@agent.tool_plain
+def forget_memory(memory_id: str) -> str:
+    """Delete a stored memory that is wrong or outdated, by the ID shown in list_memories.
+    When the user corrects a remembered fact, delete the stale memory and save the new one."""
+    try:
+        memory.delete(memory_id)
+    except Exception:
+        logging.getLogger(__name__).exception("memory delete failed")
+        return "Failed to delete memory; the memory backend returned an error."
+    return f"Deleted memory {memory_id}."
 
 
 def main() -> None:
