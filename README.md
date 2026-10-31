@@ -17,7 +17,7 @@ A personal CLI coding agent built on [pydantic-ai](https://ai.pydantic.dev) with
 - **Coder** capability: files, shell, repo context, planning, sub-agents
 - **WebSearch** for docs and error messages
 - **Advisor** second-opinion model when stuck
-- **Long-term memory**: recalls relevant facts each prompt, saves new ones via a `save_memory` tool (stored under `~/.hy_memory/`)
+- **Long-term memory**: recalls relevant facts each prompt; `save_memory`, `list_memories`, and `forget_memory` tools let the agent store, review, and correct facts (stored under `~/.hy_memory/`)
 
 ### Setup
 
