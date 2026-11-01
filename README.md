@@ -47,4 +47,4 @@ Hy-Memory runs in `pro` mode (LLM fact extraction + semantic search). To use a d
 | `AGENT_MODEL` | `openai:gpt-5.6-sol` | Main agent model |
 | `ADVISOR_MODEL` | `openai:gpt-5.6-sol` | Second-opinion model |
 | `MEMORY_MODE` | `pro` | Hy-Memory mode (`lite` = embeddings only, no LLM calls) |
-| `MEMORY_USER_ID` | `test` | Memory namespace per user |
+| `MEMORY_USER_ID` | OS username | Memory namespace per user |
