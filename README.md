@@ -7,8 +7,10 @@ A toolkit of agent skills and a personal CLI coding agent, for use with GPT and 
 Portable skill definitions live in `skills/<name>/SKILL.md`, with per-platform config in `skills/<name>/agents/<platform>.yaml`:
 
 - **gmail-cleanup** — triage Gmail, alert on suspected security threats, trash clear junk and final job rejections, and add confirmed appointments to the matching Google Calendar. Never sends email.
+- **jev-ai** — background on TypeSafe AI's Jev decision models and a procedure for researching unfamiliar AI tools before answering.
+- **kev** — self-hosted, Jev-compatible decision models (jaredpalmer/kev): install, serve, and API usage.
 
-Claude Code–only skills live in `.claude/skills/` and are auto-discovered when working in this repo.
+`.claude/skills/` holds symlinks to these so Claude Code auto-discovers them when working in this repo.
 
 ## CLI agent
 
