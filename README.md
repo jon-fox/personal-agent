@@ -40,6 +40,12 @@ uv run personal-agent
 
 Hy-Memory runs in `pro` mode (LLM fact extraction + semantic search). To use a different OpenAI-compatible endpoint for memory, set `MEMORY_LLM_*` / `MEMORY_EMBEDDER_*` env vars.
 
+Memories are namespaced by `MEMORY_USER_ID`. If that changes (e.g. the default moved to your OS username), copy existing memories over with:
+
+```bash
+uv run personal-agent-migrate-memory <old-user-id>   # destination defaults to the current MEMORY_USER_ID
+```
+
 ### Configuration (env vars, all optional)
 
 | Variable | Default | Purpose |
