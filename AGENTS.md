@@ -17,6 +17,13 @@ Check here before creating a new skill — extend an existing one if it overlaps
 - `jev-ai` — background on TypeSafe AI's Jev decision models and a procedure for researching unfamiliar AI tools before answering.
 - `kev` — self-hosted, Jev-compatible decision models (jaredpalmer/kev): install, serve, and API usage.
 
+## Dev commands
+
+- Setup: `uv sync` (Python 3.11+, requires `OPENAI_API_KEY` at runtime)
+- Run the CLI agent: `uv run personal-agent`
+- Smoke test after changing `src/`: `OPENAI_API_KEY=dummy uv run python -c "from agent import agent"` — must import cleanly
+- Migrate memories between namespaces: `uv run personal-agent-migrate-memory <src> [dst]`
+
 ## Conventions
 
 - New portable skills go in `skills/<name>/`; add an `agents/<platform>.yaml` per target platform as needed, and symlink from `.claude/skills/<name>` if Claude Code should auto-discover it. Add the skill to the inventory above and to the README's Skills list.
