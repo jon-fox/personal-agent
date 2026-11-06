@@ -9,7 +9,8 @@ from constants.agent_constants import ADVISOR_MODEL, AGENT_MODEL, MEMORY_MODE, M
 
 logging.getLogger("hy_memory").setLevel(logging.WARNING)
 
-memory = HyMemoryClient(mode=MEMORY_MODE)  # stores under ~/.hy_memory; uses OPENAI_API_KEY unless MEMORY_LLM_*/MEMORY_EMBEDDER_* are set
+# stores under ~/.hy_memory; uses OPENAI_API_KEY unless MEMORY_LLM_*/MEMORY_EMBEDDER_* are set
+memory = HyMemoryClient(mode=MEMORY_MODE)
 
 agent = Agent(
     AGENT_MODEL,
