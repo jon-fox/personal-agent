@@ -21,7 +21,7 @@ Check here before creating a new skill — extend an existing one if it overlaps
 
 - Setup: `uv sync` (Python 3.11+, requires `OPENAI_API_KEY` at runtime)
 - Run the CLI agent: `uv run personal-agent`
-- Smoke test after changing `src/`: `OPENAI_API_KEY=dummy uv run python -c "from agent import agent"` — must import cleanly
+- Test after changing `src/`: `uv run pytest` (CI runs this on every push/PR)
 - Migrate memories between namespaces: `uv run personal-agent-migrate-memory <src> [dst]`
 
 ## Conventions
