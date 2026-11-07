@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Name"
+  short_description: "What it does and the key prohibition, in one line"
+  default_prompt: "Use $skill-name to process the items supplied by this event."
