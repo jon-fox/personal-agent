@@ -1,5 +1,7 @@
 # personal-agent
 
+[![CI](https://github.com/jon-fox/personal-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/jon-fox/personal-agent/actions/workflows/ci.yml)
+
 A toolkit of agent skills and a personal CLI coding agent, for use with GPT and Claude. See [AGENTS.md](AGENTS.md) for the layout and conventions.
 
 ## Skills
