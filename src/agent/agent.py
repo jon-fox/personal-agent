@@ -63,9 +63,12 @@ def list_memories(limit: int = 50) -> str:
         logging.getLogger(__name__).exception("memory list failed")
         return "Failed to list memories; the memory backend returned an error."
     items = (result.get("vdb") or {}).get("memories") or []
-    if not items:
-        return "No memories stored."
-    return "\n".join(f"{m['memory_id']}: {m['content']}" for m in items if m.get("content"))
+    lines = [
+        f"{m['memory_id']}: {m['content']}"
+        for m in items
+        if isinstance(m, dict) and m.get("memory_id") and m.get("content")
+    ]
+    return "\n".join(lines) if lines else "No memories stored."
 
 
 @agent.tool_plain

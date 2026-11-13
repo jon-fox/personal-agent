@@ -119,3 +119,12 @@ def test_recall_memories_skips_blank_or_non_string_prompt(use_memory):
 def test_recall_memories_swallows_backend_failure(use_memory):
     use_memory(FakeMemory(fail=True))
     assert recall_memories(SimpleNamespace(prompt="hello")) == ""
+
+
+def test_list_memories_all_blank_or_malformed_reports_empty(use_memory):
+    use_memory(
+        FakeMemory(
+            list_result={"vdb": {"memories": [{"memory_id": "m1", "content": ""}, {"content": "no id"}]}}
+        )
+    )
+    assert list_memories() == "No memories stored."
