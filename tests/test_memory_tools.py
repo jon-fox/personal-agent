@@ -128,3 +128,21 @@ def test_list_memories_all_blank_or_malformed_reports_empty(use_memory):
         )
     )
     assert list_memories() == "No memories stored."
+
+
+def test_save_memory_rejects_blank_content(use_memory):
+    fake = use_memory(FakeMemory())
+    assert "empty" in save_memory("   ")
+    assert fake.calls == []
+
+
+def test_save_memory_strips_whitespace(use_memory):
+    fake = use_memory(FakeMemory())
+    save_memory("  fact  ")
+    assert fake.calls[0][1] == ("fact",)
+
+
+def test_forget_memory_rejects_blank_id(use_memory):
+    fake = use_memory(FakeMemory())
+    assert "empty" in forget_memory(" ")
+    assert fake.calls == []

@@ -45,6 +45,9 @@ def recall_memories(ctx: RunContext) -> str:
 def save_memory(content: str) -> str:
     """Save a fact worth remembering across sessions: user preferences, project context,
     decisions, or corrections. Phrase it as a standalone sentence."""
+    content = content.strip()
+    if not content:
+        return "Nothing to save: content is empty."
     try:
         memory.add(content, user_id=MEMORY_USER_ID)
     except Exception:
@@ -75,6 +78,9 @@ def list_memories(limit: int = 50) -> str:
 def forget_memory(memory_id: str) -> str:
     """Delete a stored memory that is wrong or outdated, by the ID shown in list_memories.
     When the user corrects a remembered fact, delete the stale memory and save the new one."""
+    memory_id = memory_id.strip()
+    if not memory_id:
+        return "Nothing to delete: memory_id is empty. Use list_memories to find the ID."
     try:
         memory.delete(memory_id)
     except Exception:
