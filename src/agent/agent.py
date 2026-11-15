@@ -7,6 +7,8 @@ from pydantic_ai_harness import Advisor, Coder
 
 from constants.agent_constants import ADVISOR_MODEL, AGENT_MODEL, MEMORY_MODE, MEMORY_USER_ID
 
+MAX_LIST_LIMIT = 200
+
 logging.getLogger("hy_memory").setLevel(logging.WARNING)
 
 # stores under ~/.hy_memory; uses OPENAI_API_KEY unless MEMORY_LLM_*/MEMORY_EMBEDDER_* are set
@@ -59,7 +61,8 @@ def save_memory(content: str) -> str:
 @agent.tool_plain
 def list_memories(limit: int = 50) -> str:
     """List stored long-term memories with their IDs, newest first. Use this to review
-    what is remembered before correcting or deleting a memory."""
+    what is remembered before correcting or deleting a memory. Limit is clamped to 1-200."""
+    limit = max(1, min(limit, MAX_LIST_LIMIT))
     try:
         result = memory.list_memories(user_id=MEMORY_USER_ID, limit=limit)
     except Exception:

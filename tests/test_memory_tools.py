@@ -146,3 +146,10 @@ def test_forget_memory_rejects_blank_id(use_memory):
     fake = use_memory(FakeMemory())
     assert "empty" in forget_memory(" ")
     assert fake.calls == []
+
+
+@pytest.mark.parametrize(("requested", "expected"), [(0, 1), (-5, 1), (10, 10), (10_000, 200)])
+def test_list_memories_clamps_limit(use_memory, requested, expected):
+    fake = use_memory(FakeMemory())
+    list_memories(requested)
+    assert fake.calls[0][2]["limit"] == expected
