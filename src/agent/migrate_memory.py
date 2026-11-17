@@ -20,6 +20,8 @@ def main() -> None:
         help=f"destination user ID (default: current MEMORY_USER_ID, {MEMORY_USER_ID!r})",
     )
     args = parser.parse_args()
+    if args.src == args.dst:
+        raise SystemExit(f"Source and destination are the same user ID ({args.src!r}); nothing to copy.")
 
     result = HyMemoryClient(mode=MEMORY_MODE).clone_user(args.src, args.dst)
     if result.get("success"):

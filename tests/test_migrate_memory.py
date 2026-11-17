@@ -19,6 +19,7 @@ class FakeClient:
 
 @pytest.fixture
 def fake_client(monkeypatch):
+    FakeClient.instance = None
     monkeypatch.setattr(migrate_module, "HyMemoryClient", FakeClient)
     return FakeClient
 
@@ -45,4 +46,17 @@ def test_migrate_failure_exits_with_error(fake_client, monkeypatch):
 
     monkeypatch.setattr(FakeClient, "clone_user", failing_clone)
     with pytest.raises(SystemExit, match="destination not empty"):
+        main()
+
+
+def test_migrate_same_source_and_destination_is_rejected(fake_client, monkeypatch):
+    monkeypatch.setattr("sys.argv", ["personal-agent-migrate-memory", "same-id", "same-id"])
+    with pytest.raises(SystemExit, match="same user ID"):
+        main()
+    assert fake_client.instance is None
+
+
+def test_migrate_default_destination_equal_to_source_is_rejected(fake_client, monkeypatch):
+    monkeypatch.setattr("sys.argv", ["personal-agent-migrate-memory", migrate_module.MEMORY_USER_ID])
+    with pytest.raises(SystemExit, match="same user ID"):
         main()
