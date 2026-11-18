@@ -153,3 +153,19 @@ def test_list_memories_clamps_limit(use_memory, requested, expected):
     fake = use_memory(FakeMemory())
     list_memories(requested)
     assert fake.calls[0][2]["limit"] == expected
+
+
+def test_recall_memories_dedupes_across_channels(use_memory):
+    use_memory(
+        FakeMemory(
+            search_result={
+                "memories": {
+                    "profile": [{"content": "works in Python"}, {"content": "   "}],
+                    "facts": [{"content": "works in Python "}, {"content": "likes uv"}],
+                }
+            }
+        )
+    )
+    out = recall_memories(SimpleNamespace(prompt="hello"))
+    assert out.count("works in Python") == 1
+    assert out.count("\n- ") == 2

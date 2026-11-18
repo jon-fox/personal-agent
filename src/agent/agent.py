@@ -37,6 +37,7 @@ def recall_memories(ctx: RunContext) -> str:
     for channel in (results.get("memories") or {}).values():
         if isinstance(channel, list):
             recalled += [m["content"] for m in channel if isinstance(m, dict) and m.get("content")]
+    recalled = list(dict.fromkeys(item.strip() for item in recalled if str(item).strip()))
     if not recalled:
         return ""
     lines = "\n".join(f"- {item}" for item in recalled)
