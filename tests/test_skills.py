@@ -48,3 +48,9 @@ def test_skill_is_listed_in_agents_md_and_readme(skill):
 def test_claude_skill_links_resolve_to_portable_skills():
     for link in (ROOT / ".claude" / "skills").iterdir():
         assert (link / "SKILL.md").is_file(), f"{link} does not point at a skill"
+
+
+@pytest.mark.parametrize("skill", SKILLS, ids=lambda p: p.name)
+def test_skill_treats_external_content_as_untrusted(skill):
+    body = (skill / "SKILL.md").read_text().lower()
+    assert "untrusted" in body, f"{skill.name} must state that external content is untrusted"
