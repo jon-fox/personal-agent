@@ -33,7 +33,7 @@ def test_frontmatter_has_name_and_description(skill):
 @pytest.mark.parametrize("skill", SKILLS, ids=lambda p: p.name)
 def test_skill_files_contain_no_email_addresses(skill):
     for path in skill.rglob("*"):
-        if path.is_file():
+        if path.is_file() and not path.name.startswith("."):  # skip .DS_Store and other dotfiles
             assert not EMAIL.search(path.read_text()), f"email address in {path}"
 
 
