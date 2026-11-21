@@ -8,6 +8,7 @@ This repo is a toolkit of skills and agent code for use with GPT and Claude.
 - `skills/<name>/agents/<platform>.yaml` — platform-specific config for a skill (e.g. `skills/gmail-cleanup/agents/openai.yaml` holds the ChatGPT display name and default prompt).
 - `.claude/skills/<name>` — what Claude Code auto-discovers in this project: symlinks to portable skills in `skills/`, plus any genuinely Claude-only skills.
 - `src/` — a personal CLI coding agent built on pydantic-ai with long-term memory (see README for setup).
+- `docs/` — design docs for planned work (e.g. `docs/security-agent.md`, the phased security-agent plan). Check the relevant doc's roadmap before building toward one of these ideas.
 
 ## Current skills
 

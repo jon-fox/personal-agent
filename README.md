@@ -14,6 +14,8 @@ Portable skill definitions live in `skills/<name>/SKILL.md`, with per-platform c
 
 `.claude/skills/` holds symlinks to these so Claude Code auto-discovers them when working in this repo.
 
+In progress: a phased [security agent](docs/security-agent.md) (Phase 0 — design).
+
 ## CLI agent
 
 A personal CLI coding agent built on [pydantic-ai](https://ai.pydantic.dev) with long-term memory via [Hy-Memory](https://github.com/Tencent-Hunyuan/Hy-Memory).
