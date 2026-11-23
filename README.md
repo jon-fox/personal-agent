@@ -15,7 +15,7 @@ Portable skill definitions live in `skills/<name>/SKILL.md`, with per-platform c
 
 `.claude/skills/` holds symlinks to these so Claude Code auto-discovers them when working in this repo.
 
-In progress: a phased [security agent](docs/security-agent.md) (Phase 1 shipped — `security-triage` skill).
+In progress: a phased [security agent](docs/security-agent.md) (Phase 2 shipped — `security-triage` skill + repo security review).
 
 ## CLI agent
 

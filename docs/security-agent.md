@@ -1,6 +1,6 @@
 # Security agent — design (Phase 0)
 
-Status: Phase 1 shipped — `skills/security-triage/` exists and `gmail-cleanup` defers to it. Next: Phase 2.
+Status: Phase 2 shipped — `security-triage` skill, plus `personal-agent-security-review` / the CLI agent's `review_repo_security` tool (read-only repo checks; this repo scans clean). Next: Phase 3.
 
 ## Mission
 

@@ -26,6 +26,7 @@ Check here before creating a new skill — extend an existing one if it overlaps
 - Test after changing `src/`: `uv run pytest` (CI runs this on every push/PR)
 - Lint/format before committing: `uv run ruff check --fix src tests && uv run ruff format src tests` (CI enforces both)
 - Migrate memories between namespaces: `uv run personal-agent-migrate-memory <src> [dst]`
+- Security-review a repo (read-only): `uv run personal-agent-security-review [path]` — exits 1 on critical/high findings
 
 ## Conventions
 

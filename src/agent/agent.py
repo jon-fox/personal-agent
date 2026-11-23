@@ -5,6 +5,7 @@ from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import WebSearch
 from pydantic_ai_harness import Advisor, Coder
 
+from agent.security_review import format_report, run_review
 from constants.agent_constants import ADVISOR_MODEL, AGENT_MODEL, MEMORY_MODE, MEMORY_USER_ID
 
 MAX_LIST_LIMIT = 200
@@ -91,6 +92,18 @@ def forget_memory(memory_id: str) -> str:
         logging.getLogger(__name__).exception("memory delete failed")
         return "Failed to delete memory; the memory backend returned an error."
     return f"Deleted memory {memory_id}."
+
+
+@agent.tool_plain
+def review_repo_security(path: str = ".") -> str:
+    """Run a read-only security review of a repository: tracked sensitive files, possible committed
+    secrets, .gitignore gaps, CI workflow hardening, and Dependabot presence. Returns findings with
+    severity and location; makes no changes."""
+    try:
+        return format_report(run_review(path))
+    except Exception:
+        logging.getLogger(__name__).exception("security review failed")
+        return "Security review failed; see logs for the error."
 
 
 def main() -> None:

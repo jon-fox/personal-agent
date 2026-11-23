@@ -13,6 +13,7 @@ dependencies = [
 [project.scripts]
 personal-agent = "agent.agent:main"
 personal-agent-migrate-memory = "agent.migrate_memory:main"
+personal-agent-security-review = "agent.security_review:main"
 
 [build-system]
 requires = ["hatchling"]
