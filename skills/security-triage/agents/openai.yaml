@@ -1,0 +1,4 @@
+interface:
+  display_name: "Security Triage"
+  short_description: "Assess a suspicious message or alert with evidence; never remediates"
+  default_prompt: "Use $security-triage to assess the item I supply and report classification, evidence, and a next check."

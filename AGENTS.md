@@ -17,6 +17,7 @@ Check here before creating a new skill — extend an existing one if it overlaps
 - `gmail-cleanup` — triage Gmail, alert on suspected security threats, trash clear junk and final job rejections, add confirmed appointments to Google Calendar; never sends email.
 - `jev-ai` — background on TypeSafe AI's Jev decision models and a procedure for researching unfamiliar AI tools before answering.
 - `kev` — self-hosted, Jev-compatible decision models (jaredpalmer/kev): install, serve, and API usage.
+- `security-triage` — read-only assessment of a supplied message or alert: classification, observable evidence, confidence, next check; never remediates. Other skills defer to it for security verdicts.
 
 ## Dev commands
 

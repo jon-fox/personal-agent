@@ -1,6 +1,6 @@
 # Security agent — design (Phase 0)
 
-Status: Phase 0 (this document). Nothing below Phase 1 is built yet.
+Status: Phase 1 shipped — `skills/security-triage/` exists and `gmail-cleanup` defers to it. Next: Phase 2.
 
 ## Mission
 
